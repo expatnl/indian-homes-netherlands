@@ -1,0 +1,64 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.pem
+
+# editors / IDE
+.vscode/
+.idea/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# local env files — never commit real secrets; .env.local.example is the
+# only env file meant to be tracked
+.env
+.env*.local
+
+# vercel
+.vercel
+
+# sentry (sentry-cli auth token if ever generated locally)
+.sentryclirc
+
+# playwright
+/playwright-report/
+/test-results/
+/blob-report/
+
+# supabase
+/supabase/.branches
+/supabase/.temp
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# ad-hoc debugging scripts / scratch data (see CLAUDE session conventions —
+# temporary files created during manual verification, always meant to be
+# deleted, but ignored here as a safety net if one is ever left behind)
+scratch-*
+.pgtest-data*
+.tmp-pgdata*
