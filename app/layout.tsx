@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { PlausibleScript } from "@/components/PlausibleScript";
+import { Analytics } from "@vercel/analytics/react";
 import { AuthProvider } from "@/lib/auth/AuthContext";
 
 const geistSans = localFont({
@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           {children}
-          <PlausibleScript />
+          <Analytics />
         </AuthProvider>
       </body>
     </html>

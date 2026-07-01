@@ -370,10 +370,11 @@ Redeploy after adding variables so they take effect.
 Run through this once everything above is done:
 
 - [ ] `git push` succeeds, PR triggers a Vercel preview URL that loads the homepage
-- [ ] `npx supabase link` succeeds against the production project; `supabase/migrations` is the source of schema truth going forward
+- [x] `npx supabase link` succeeds against the production project; `supabase/migrations` is the source of schema truth going forward — confirmed: all 11 migrations pushed, all 5 tables (`users`, `listings`, `listing_photos`, `listing_reports`, `cities`) visible in Table Editor
+- [x] Schema matches Phase 1 exactly on the real database — confirmed via Supabase Dashboard: 20 RLS policies across the 5 tables (4 users / 8 listings / 4 listing_photos / 3 listing_reports / 1 cities, matching `supabase/migrations/20260630121000_enable_rls_policies.sql` exactly), `set_updated_at` trigger present on `listings` (`BEFORE UPDATE`, `ROW`), and `cities` seeded
 - [ ] Separate Supabase staging project exists, same schema (empty for now)
 - [ ] Firebase Console shows Google + Email/Password both enabled under Sign-in method
-- [ ] Firebase third-party auth integration added in Supabase Dashboard; the REST API test in §4d returns exactly the seeded test row (not empty, not a JWT error)
+- [x] Firebase third-party auth integration added in Supabase Dashboard; the REST API test in §4d returns exactly the seeded test row — confirmed: Supabase correctly verified the Firebase JWT, `requesting_user_id()` extracted the Firebase UID, and `users_select_own` RLS policy returned exactly one row with correct email/name/is_admin=false
 - [ ] Real Google sign-in via `/account/register` creates a `users` row with the Firebase UID, correct email/name, `is_admin = false` (§4e)
 - [ ] Real email/password sign-up creates a second `users` row with the typed name, not a Google profile name (§4e)
 - [ ] Password reset email arrives and successfully resets the password (§4e)
